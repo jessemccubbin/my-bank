@@ -10,9 +10,13 @@ public class Main {
 	public static void main(String[] args) {
 		
 //		MusicalChairs.play();
+		
 //		MusicalChairs.playWithCollections();
+		
 //		MusicalChairs.playWithSet();
-//		MusicalChairs.playWithMap();
+		
+		MusicalChairs.playWithMap();
+		
 		MusicalChairs.playWithSorting();
 	}
 }
