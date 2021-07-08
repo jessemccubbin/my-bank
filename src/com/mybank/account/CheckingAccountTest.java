@@ -53,5 +53,46 @@ class CheckingAccountTest {
 			account.deposit(amount);
 		});
 	}
+	
+	@Test
+	void withdraw__insufficient_amount__throws() {
+		// try with good amount
+		double amount = 142.0;
+		
+		// do it
+		assertThrows(InsufficientFundsException.class, () -> {
+			account.withdraw(amount);
+		});
+	}
+	
+	@Test
+	void withdraw_amount_greater_than_zero_works() throws InsufficientFundsException {
+		double amount = 100;
+		account.deposit(amount + 1);
+		account.withdraw(amount);
+		assertEquals(1.0, account.getBalance());
+	}
+	
+	@Test
+	void withdraw__amount_equal_to_zero__throws() {
+		// try with amount less than zero/balance
+		double amount = 0.0;
+		
+		// do it
+		assertThrows(IllegalArgumentException.class, () -> {
+			account.withdraw(amount);
+		});
+	}
+	
+	@Test
+	void withdraw__amount_less_than_zero__throws() {
+		// try with amount less than zero/balance
+		double amount = -10.0;
+		
+		// do it
+		assertThrows(IllegalArgumentException.class, () -> {
+			account.withdraw(amount);
+		});
+	}
 
 }
